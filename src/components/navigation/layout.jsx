@@ -1,6 +1,6 @@
 import React from "react";
-import { Nav, NavItem, NavLink as RSLink } from "reactstrap";
-import { NavLink as RouterLink, Outlet } from "react-router-dom";
+import { Nav, NavItem } from "reactstrap";
+import { Outlet } from "react-router-dom";
 
 import NavLink from "./nav-link";
 
