@@ -1,3 +1,5 @@
+import camelcase from "camelcase";
+
 import { makeURL } from "../utils/utils";
 
 const rootUrls = {
@@ -14,3 +16,16 @@ export const urls = {
   // OTHER urls
   ROOMS: makeURL([rootUrls.ROOT, rootUrls.ROOMS]),
 };
+
+const roomTypes = [
+  "Bedroom",
+  "Bathroom",
+  "Den",
+  "Dining Room",
+  "Garage",
+  "Kitchen",
+  "Living Room",
+  "Other",
+];
+
+export const roomTypesKeyValues = roomTypes.map((str) => ({ name: str, value: camelcase(str) }));
