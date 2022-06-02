@@ -13,8 +13,10 @@ const AuthModal = ({ newUser, toggle, isOpen }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    const callback = (response) =>
+    const callback = (response) => {
       dispatch({ type: userConstants.SET_USER, payload: response.data });
+      toggle();
+    };
     APIService.POST(newUser ? urls.SIGNUP : urls.LOGIN, values, callback);
   };
 
@@ -28,7 +30,7 @@ const AuthModal = ({ newUser, toggle, isOpen }) => {
             <ModalBody>
               <TextInputField name="username" label="Username" />
               <TextInputField name="password" label="Password" />
-              {newUser && <TextInputField name="confirmPassword" label="Password" />}
+              {newUser && <TextInputField name="confirmPassword" label="Confirm Password" />}
             </ModalBody>
             <ModalFooter>
               <div className="buttons-wrapper">
