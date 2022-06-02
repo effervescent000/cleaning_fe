@@ -7,8 +7,10 @@ import "bootstrap/scss/bootstrap.scss";
 import "./styles/main.scss";
 
 import APIService from "./utils/api-service";
+import { userLoggedIn } from "./utils/utils";
 import { urls } from "./constants/constants";
 import { userConstants } from "./constants/user.constants";
+import { roomConstants } from "./constants/rooms.constants";
 
 import Layout from "./components/navigation/layout";
 import RoomPage from "./components/rooms/room-page";
@@ -24,6 +26,14 @@ const App = () => {
       );
     }
   }, []);
+
+  useEffect(() => {
+    if (userLoggedIn(user)) {
+      APIService.GET(urls.ROOMS, (response) =>
+        dispatch({ type: roomConstants.SET_ROOMS, payload: response.data })
+      );
+    }
+  }, [user]);
 
   return (
     <Router>
