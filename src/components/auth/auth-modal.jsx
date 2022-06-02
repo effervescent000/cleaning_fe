@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
-const AuthModal = ({ isOpen, toggle }) => {
+const AuthModal = ({ isOpen, toggle, newUser }) => {
   return (
-    <Modal toggle={toggle}>
-      <ModalHeader>Login/Register</ModalHeader>
+    <Modal isOpen={isOpen} toggle={toggle}>
+      <ModalHeader>{newUser ? "Register" : "Login"}</ModalHeader>
     </Modal>
   );
 };
