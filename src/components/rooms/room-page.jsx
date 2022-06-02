@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import RoomModal from "./room-modal";
+import RoomsWrapper from "./rooms-wrapper";
 
 const RoomPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,13 @@ const RoomPage = () => {
 
   return (
     <div>
-      {rooms.length ? <>Nothing here yet!</> : <>No rooms added!</>}
+      {rooms.length ? (
+        <>
+          <RoomsWrapper rooms={rooms} />
+        </>
+      ) : (
+        <>No rooms added!</>
+      )}
       <RoomModal isOpen={isOpen} toggle={toggle} />
       <button onClick={toggle}>+</button>
     </div>
