@@ -6,11 +6,12 @@ import { Routes, Route } from "react-router";
 import "bootstrap/scss/bootstrap.scss";
 import "./styles/main.scss";
 
-import APIService from "./utils/api-service";
+import apiService from "./utils/api-service";
 import { userLoggedIn } from "./utils/utils";
 import { urls } from "./constants/constants";
 import { userConstants } from "./constants/user.constants";
 import { roomConstants } from "./constants/rooms.constants";
+import { setTasks } from "./actions/tasks.actions";
 
 import Layout from "./components/navigation/layout";
 import RoomPage from "./components/rooms/room-page";
@@ -21,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     if (!user.username) {
-      APIService.GET(urls.CHECK, (response) =>
+      apiService.GET(urls.CHECK, (response) =>
         dispatch({ type: userConstants.SET_USER, payload: response.data })
       );
     }
@@ -29,9 +30,10 @@ const App = () => {
 
   useEffect(() => {
     if (userLoggedIn(user)) {
-      APIService.GET(urls.ROOMS, (response) =>
+      apiService.GET(urls.ROOMS, (response) =>
         dispatch({ type: roomConstants.SET_ROOMS, payload: response.data })
       );
+      apiService.GET(urls.TASKS, (response) => dispatch(setTasks(response.data)));
     }
   }, [user]);
 
