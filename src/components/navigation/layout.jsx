@@ -9,8 +9,8 @@ const Layout = () => {
   return (
     <div className="page-wrapper">
       <Nav tabs>
-        <NavLink url="/rooms" />
-        <NavItem>Tasks</NavItem>
+        <NavLink url="/rooms" label="Rooms" />
+        <NavLink url="/tasks" label="Tasks" />
         <NavItem>Schedule</NavItem>
         <AuthDropdown />
       </Nav>

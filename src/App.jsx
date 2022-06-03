@@ -15,6 +15,7 @@ import { setTasks } from "./actions/tasks.actions";
 
 import Layout from "./components/navigation/layout";
 import RoomPage from "./components/rooms/room-page";
+import TasksPage from "./components/tasks/task-page";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="rooms" element={<RoomPage />} />
+            <Route path="tasks" element={<TasksPage />} />
           </Route>
         </Routes>
       </div>
