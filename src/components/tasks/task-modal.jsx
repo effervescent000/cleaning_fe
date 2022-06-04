@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Form } from "react-final-form";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
@@ -8,10 +8,14 @@ import { urls } from "../../constants/constants";
 import { addTask } from "../../actions/tasks.actions";
 
 import TextInputField from "../form-components/text-input";
+import SelectField from "../form-components/select-field";
 import CheckboxInput from "../form-components/checkbox-input";
 
 const TaskModal = ({ isOpen, toggle }) => {
   const dispatch = useDispatch();
+  const rooms = useSelector((state) => state.rooms);
+
+  const roomKeyValues = rooms.map((room) => ({ value: room.id, name: room.label }));
 
   const onSubmit = (values) => {
     const callback = (response) => {
@@ -29,6 +33,7 @@ const TaskModal = ({ isOpen, toggle }) => {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <ModalBody>
+              <SelectField name="room_id" label="Room" options={roomKeyValues} />
               <TextInputField name="label" label="Task label" />
               <TextInputField name="points" label="Effort points" />
               <CheckboxInput name="partial_effort" label="Partial effort enabled?" />
