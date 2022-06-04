@@ -11,7 +11,7 @@ import TextInputField from "../form-components/text-input";
 import SelectField from "../form-components/select-field";
 import CheckboxInput from "../form-components/checkbox-input";
 
-const TaskModal = ({ isOpen, toggle }) => {
+const TaskModal = ({ isOpen, toggle, task }) => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms);
 
@@ -30,6 +30,7 @@ const TaskModal = ({ isOpen, toggle }) => {
       <ModalHeader>Add a task</ModalHeader>
       <Form
         onSubmit={onSubmit}
+        initialValues={task && { ...task }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <ModalBody>
