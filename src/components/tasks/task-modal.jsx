@@ -5,7 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import apiService from "../../utils/api-service";
 import { urls } from "../../constants/constants";
-import { addTask } from "../../actions/tasks.actions";
+import { addTask, replaceTask } from "../../actions/tasks.actions";
 
 import TextInputField from "../form-components/text-input";
 import SelectField from "../form-components/select-field";
@@ -18,11 +18,17 @@ const TaskModal = ({ isOpen, toggle, task }) => {
   const roomKeyValues = rooms.map((room) => ({ value: room.id, name: room.label }));
 
   const onSubmit = (values) => {
-    const callback = (response) => {
-      dispatch(addTask(response.data));
-      toggle();
-    };
-    apiService.POST(urls.TASKS, values, callback);
+    if (task) {
+      apiService.PUT(urls.TASKS(task.id), values, (response) => {
+        dispatch(replaceTask(response.data));
+        toggle();
+      });
+    } else {
+      apiService.POST(urls.TASKS(), values, (response) => {
+        dispatch(addTask(response.data));
+        toggle();
+      });
+    }
   };
 
   return (

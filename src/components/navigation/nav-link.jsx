@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 
 const NavLink = ({ url, label }) => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <NavItem>

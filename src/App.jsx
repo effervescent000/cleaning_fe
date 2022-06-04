@@ -34,7 +34,7 @@ const App = () => {
       apiService.GET(urls.ROOMS, (response) =>
         dispatch({ type: roomConstants.SET_ROOMS, payload: response.data })
       );
-      apiService.GET(urls.TASKS, (response) => dispatch(setTasks(response.data)));
+      apiService.GET(urls.TASKS(), (response) => dispatch(setTasks(response.data)));
     }
   }, [user]);
 
