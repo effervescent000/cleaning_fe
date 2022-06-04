@@ -14,3 +14,8 @@ export const removeTask = (task) => ({
   type: taskConstants.REMOVE_TASK,
   payload: task,
 });
+
+export const replaceTask = (task) => ({
+  type: taskConstants.REPLACE_TASK,
+  payload: task,
+});
