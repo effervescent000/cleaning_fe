@@ -10,6 +10,7 @@ import { addTask, replaceTask } from "../../actions/tasks.actions";
 import TextInputField from "../form-components/text-input";
 import SelectField from "../form-components/select-field";
 import CheckboxInput from "../form-components/checkbox-input";
+import RadioInputGroup from "../form-components/radio-button-group";
 
 const TaskModal = ({ isOpen, toggle, task }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const TaskModal = ({ isOpen, toggle, task }) => {
             <ModalBody>
               <SelectField name="room_id" label="Room" options={roomKeyValues} />
               <TextInputField name="label" label="Task label" />
-              <TextInputField name="points" label="Effort points" />
+              <RadioInputGroup name="points" groupLabel="Effort points" values={[1, 2, 3]} />
               <CheckboxInput name="partial_effort" label="Partial effort enabled?" />
               <TextInputField name="period" label="Every X days" />
               <TextInputField name="note" label="Comment" />
