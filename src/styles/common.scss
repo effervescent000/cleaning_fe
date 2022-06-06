@@ -9,3 +9,15 @@
 .d-flex {
   display: flex;
 }
+
+.d-grid {
+  display: grid;
+}
+
+.two-columns-even {
+  grid-template-columns: 1fr 1fr;
+}
+
+.two-columns-right-larger {
+  grid-template-columns: 1fr 2fr;
+}
