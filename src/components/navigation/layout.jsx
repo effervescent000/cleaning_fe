@@ -9,12 +9,16 @@ const Layout = () => {
   return (
     <div className="page-wrapper">
       <Nav tabs>
-        <NavLink url="/rooms" label="Rooms" />
-        <NavLink url="/tasks" label="Tasks" />
-        <NavItem>Schedule</NavItem>
-        <AuthDropdown />
+        <div className="d-flex nav-links-wrapper">
+          <NavLink url="/rooms" label="Rooms" />
+          <NavLink url="/tasks" label="Tasks" />
+          <NavItem>Schedule</NavItem>
+          <AuthDropdown />
+        </div>
       </Nav>
-      <Outlet />
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 };
