@@ -1,15 +1,15 @@
 import React from "react";
-import { NavItem, NavLink as RSLink } from "reactstrap";
-import { useLocation } from "react-router-dom";
+import { NavItem } from "reactstrap";
+import { NavLink as RouterLink } from "react-router-dom";
 
 const NavLink = ({ url, label }) => {
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <NavItem>
-      <RSLink href={url} active={url === location.pathname}>
+      <RouterLink to={url} className="nav-link">
         {label}
-      </RSLink>
+      </RouterLink>
     </NavItem>
   );
 };
