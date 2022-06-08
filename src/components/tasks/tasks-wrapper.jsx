@@ -12,6 +12,13 @@ const TasksWrapper = ({ tasks }) => {
 
   return (
     <div>
+      <div className="task-columns">
+        <span>Task</span>
+        <span>Room</span>
+        <span>Effort points</span>
+        <span>Repeat</span>
+        <span>Last completed</span>
+      </div>
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} room={roomsLookup[task.room_id]} />
       ))}
