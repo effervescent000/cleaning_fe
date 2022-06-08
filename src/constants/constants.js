@@ -14,8 +14,9 @@ export const urls = {
   LOGIN: makeURL([rootUrls.ROOT, rootUrls.AUTH, "login"]),
   SIGNUP: makeURL([rootUrls.ROOT, rootUrls.AUTH, "signup"]),
   CHECK: makeURL([rootUrls.ROOT, rootUrls.AUTH, "check"]),
-  // OTHER urls
-  ROOMS: makeURL([rootUrls.ROOT, rootUrls.ROOMS]),
+  // other urls
+  ROOMS: (id = undefined) =>
+    id ? makeURL([rootUrls.ROOT, rootUrls.ROOMS, id]) : makeURL([rootUrls.ROOT, rootUrls.ROOMS]),
   TASKS: (id = undefined) =>
     id ? makeURL([rootUrls.ROOT, rootUrls.TASKS, id]) : makeURL([rootUrls.ROOT, rootUrls.TASKS]),
 };

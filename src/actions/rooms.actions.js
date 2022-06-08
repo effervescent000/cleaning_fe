@@ -14,3 +14,8 @@ export const removeRoom = (room) => ({
   type: roomConstants.REMOVE_ROOM,
   payload: room,
 });
+
+export const replaceRoom = (room) => ({
+  type: roomConstants.REPLACE_ROOM,
+  payload: room,
+});

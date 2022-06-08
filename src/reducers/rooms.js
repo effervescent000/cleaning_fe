@@ -10,6 +10,8 @@ const roomsReducer = (state = baseState, action) => {
       return [...state, action.payload];
     case roomConstants.REMOVE_ROOM:
       return state.filter((room) => room.id !== action.payload.id);
+    case roomConstants.REPLACE_ROOM:
+      return [...state.filter((room) => room.id !== action.payload.id), action.payload];
     default:
       return state;
   }
