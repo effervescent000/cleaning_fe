@@ -32,6 +32,7 @@ const RoomModal = ({ isOpen, toggle, room }) => {
       <ModalHeader>Add a room</ModalHeader>
       <Form
         onSubmit={onSubmit}
+        initialValues={room && { ...room }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <ModalBody>
