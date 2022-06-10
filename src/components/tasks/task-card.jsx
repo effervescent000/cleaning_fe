@@ -13,7 +13,7 @@ const TaskCard = ({ task, room }) => {
     <div className="d-flex">
       <div className="task-columns">
         <div>{task.label}</div>
-        <div>{room.label}</div>
+        <div>{room && room.label}</div>
         <div>{task.points}</div>
         <div>{task.period}</div>
         <div>{task.last_done}</div>
