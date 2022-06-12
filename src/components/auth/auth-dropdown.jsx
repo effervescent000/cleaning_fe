@@ -32,7 +32,7 @@ const AuthDropdown = () => {
           {userLoggedIn(user) ? (
             <DropdownItem
               onClick={() => {
-                jsCookie.remove("access_token_cookie");
+                jsCookie.remove("access_token_cookie", { secure: true });
                 jsCookie.remove("csrf_access_token");
                 dispatch(setUser({}));
               }}

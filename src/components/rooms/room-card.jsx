@@ -10,7 +10,7 @@ const RoomCard = ({ room }) => {
   };
 
   return (
-    <div>
+    <div className="room-card">
       <span>{room.label}</span>
       <button onClick={toggle}>Edit</button>
       <RoomModal isOpen={modalIsOpen} toggle={toggle} room={room} />

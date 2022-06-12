@@ -22,7 +22,9 @@ const RoomPage = () => {
         <>No rooms added!</>
       )}
       <RoomModal isOpen={isOpen} toggle={toggle} />
-      <button onClick={toggle}>+</button>
+      <button name="add-room-button" onClick={toggle}>
+        +
+      </button>
     </div>
   );
 };
