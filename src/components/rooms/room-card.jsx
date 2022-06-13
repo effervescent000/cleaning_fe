@@ -12,7 +12,10 @@ const RoomCard = ({ room }) => {
   return (
     <div className="room-card">
       <span>{room.label}</span>
-      <button onClick={toggle}>Edit</button>
+      <button className="edit-btn" onClick={toggle}>
+        Edit
+      </button>
+      <button className="delete-btn">Delete</button>
       <RoomModal isOpen={modalIsOpen} toggle={toggle} room={room} />
     </div>
   );
