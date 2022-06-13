@@ -27,6 +27,10 @@ class APIService {
     this.makeBodylessRequest(endpoint, "get").then(callback).catch(catchCallback);
   }
 
+  async DELETE(endpoint, callback, catchCallback = (error) => console.log(error)) {
+    this.makeBodylessRequest(endpoint, "delete").then(callback).catch(catchCallback);
+  }
+
   async POST(endpoint, body, callback, catchCallback = (error) => console.log(error)) {
     this.makeBodyRequest(endpoint, body, "post").then(callback).catch(catchCallback);
   }
