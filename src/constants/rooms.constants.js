@@ -3,4 +3,5 @@ export const roomConstants = {
   ADD_ROOM: "rooms/addRoom",
   REMOVE_ROOM: "rooms/removeRoom",
   REPLACE_ROOM: "rooms/replaceRoom",
+  FETCH_ROOMS: "rooms/fetchRooms",
 };
