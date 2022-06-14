@@ -5,7 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import apiService from "../../utils/api-service";
 import { roomTypesKeyValues, urls } from "../../constants/constants";
-import { addRoom, replaceRoom } from "../../actions/rooms.actions";
+import { addRoom, fetchRooms } from "../../actions/rooms.actions";
 
 import TextInputField from "../form-components/text-input";
 import SelectField from "../form-components/select-field";
@@ -15,8 +15,8 @@ const RoomModal = ({ isOpen, toggle, room }) => {
 
   const onSubmit = (values) => {
     if (room) {
-      apiService.PUT(urls.ROOMS(room.id), values, (response) => {
-        dispatch(replaceRoom(response.data));
+      apiService.PUT(urls.ROOMS(room.id), values, () => {
+        dispatch(fetchRooms());
         toggle();
       });
     } else {

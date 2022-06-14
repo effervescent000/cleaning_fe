@@ -17,11 +17,6 @@ export const removeRoom = (room) => ({
   payload: room,
 });
 
-export const replaceRoom = (room) => ({
-  type: roomConstants.REPLACE_ROOM,
-  payload: room,
-});
-
 export const fetchRooms = () => (dispatch) => {
   apiService.GET(urls.ROOMS(), (response) => dispatch(setRooms(response.data)));
 };
