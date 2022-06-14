@@ -25,3 +25,7 @@ export const replaceRoom = (room) => ({
 export const fetchRooms = () => (dispatch) => {
   apiService.GET(urls.ROOMS(), (response) => dispatch(setRooms(response.data)));
 };
+
+export const deleteRoomAndUpdate = (id) => (dispatch) => {
+  apiService.DELETE(`${urls.ROOMS(id)}`, (response) => dispatch(setRooms(response.data)));
+};

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import RoomModal from "./room-modal";
+import { deleteRoomAndUpdate } from "../../actions/rooms.actions";
 
 const RoomCard = ({ room }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggle = () => {
     setModalIsOpen(!modalIsOpen);
@@ -15,7 +18,9 @@ const RoomCard = ({ room }) => {
       <button className="edit-btn" onClick={toggle}>
         Edit
       </button>
-      <button className="delete-btn">Delete</button>
+      <button className="delete-btn" onClick={() => dispatch(deleteRoomAndUpdate(room.id))}>
+        Delete
+      </button>
       <RoomModal isOpen={modalIsOpen} toggle={toggle} room={room} />
     </div>
   );
