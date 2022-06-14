@@ -10,13 +10,12 @@ import apiService from "./utils/api-service";
 import { userLoggedIn } from "./utils/utils";
 import { urls } from "./constants/constants";
 import { userConstants } from "./constants/user.constants";
-import { roomConstants } from "./constants/rooms.constants";
 import { setTasks } from "./actions/tasks.actions";
 
 import Layout from "./components/navigation/layout";
 import RoomPage from "./components/rooms/room-page";
 import TasksPage from "./components/tasks/task-page";
-import { setRooms } from "./actions/rooms.actions";
+import { fetchRooms } from "./actions/rooms.actions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     if (userLoggedIn(user)) {
-      apiService.GET(urls.ROOMS(), (response) => dispatch(setRooms(response.data)));
+      dispatch(fetchRooms());
       apiService.GET(urls.TASKS(), (response) => dispatch(setTasks(response.data)));
     }
   }, [user]);

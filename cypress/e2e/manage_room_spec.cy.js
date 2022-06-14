@@ -18,11 +18,17 @@ describe("Add, edit, delete rooms", () => {
     cy.contains(testBedroomLabel);
   });
   it("Edits an existing room", () => {
-    cy.get(".room-card > button").first().click();
+    cy.get("[data-cy=edit]").last().click();
     cy.get("select[name=type]").select("bathroom");
     cy.get("input[name=label]").type(`{selectAll}{backspace}${editedRoomLabel}`);
     cy.get("button[type=submit]").click();
     cy.wait(200);
     cy.contains(editedRoomLabel);
+  });
+  it("Deletes an existing room", () => {
+    cy.contains(editedRoomLabel).should("exist");
+    cy.get("[data-cy=delete]").last().click();
+    cy.wait(200);
+    cy.contains(editedRoomLabel).should("not.exist");
   });
 });
