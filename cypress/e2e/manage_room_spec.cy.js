@@ -15,7 +15,7 @@ describe("Add, edit, delete rooms", () => {
     cy.get("input[name=label]").type(testBedroomLabel);
     cy.get("button[type=submit]").click();
     cy.wait(200);
-    cy.contains(testBedroomLabel);
+    cy.contains(testBedroomLabel).should("exist");
   });
   it("Edits an existing room", () => {
     cy.get("[data-cy=edit]").last().click();
@@ -23,7 +23,7 @@ describe("Add, edit, delete rooms", () => {
     cy.get("input[name=label]").type(`{selectAll}{backspace}${editedRoomLabel}`);
     cy.get("button[type=submit]").click();
     cy.wait(200);
-    cy.contains(editedRoomLabel);
+    cy.contains(editedRoomLabel).should("exist");
   });
   it("Deletes an existing room", () => {
     cy.contains(editedRoomLabel).should("exist");
