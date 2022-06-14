@@ -15,10 +15,14 @@ const RoomCard = ({ room }) => {
   return (
     <div className="room-card">
       <span>{room.label}</span>
-      <button className="edit-btn" onClick={toggle}>
+      <button className="edit-btn" data-cy="edit" onClick={toggle}>
         Edit
       </button>
-      <button className="delete-btn" onClick={() => dispatch(deleteRoomAndUpdate(room.id))}>
+      <button
+        className="delete-btn"
+        data-cy="delete"
+        onClick={() => dispatch(deleteRoomAndUpdate(room.id))}
+      >
         Delete
       </button>
       <RoomModal isOpen={modalIsOpen} toggle={toggle} room={room} />
