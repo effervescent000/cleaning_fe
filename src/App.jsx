@@ -22,19 +22,25 @@ const App = () => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!user.username) {
+    if (!userLoggedIn(user)) {
       apiService.GET(urls.CHECK, (response) =>
         dispatch({ type: userConstants.SET_USER, payload: response.data })
       );
+    } else {
+      fetchData();
     }
   }, []);
 
   useEffect(() => {
     if (userLoggedIn(user)) {
-      dispatch(fetchRooms());
-      apiService.GET(urls.TASKS(), (response) => dispatch(setTasks(response.data)));
+      fetchData();
     }
   }, [user]);
+
+  const fetchData = () => {
+    dispatch(fetchRooms());
+    apiService.GET(urls.TASKS(), (response) => dispatch(setTasks(response.data)));
+  };
 
   return (
     <Router>

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { deleteTaskAndUpdate } from "../../actions/tasks.actions";
 
 import TaskModal from "./task-modal";
 
 const TaskCard = ({ task, room }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggle = () => {
     setModalIsOpen(!modalIsOpen);
@@ -19,7 +23,12 @@ const TaskCard = ({ task, room }) => {
         <div>{task.last_done}</div>
       </div>
 
-      <button onClick={toggle}>Edit</button>
+      <button data-cy="edit" onClick={toggle}>
+        Edit
+      </button>
+      <button data-cy="delete" onClick={() => dispatch(deleteTaskAndUpdate(task.id))}>
+        Delete
+      </button>
       <TaskModal isOpen={modalIsOpen} toggle={toggle} task={task} />
     </div>
   );
