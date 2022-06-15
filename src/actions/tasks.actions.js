@@ -1,4 +1,6 @@
+import { urls } from "../constants/constants";
 import { taskConstants } from "../constants/tasks.constants";
+import apiService from "../utils/api-service";
 
 export const setTasks = (tasks) => ({
   type: taskConstants.SET_TASKS,
@@ -19,3 +21,7 @@ export const replaceTask = (task) => ({
   type: taskConstants.REPLACE_TASK,
   payload: task,
 });
+
+export const deleteTaskAndUpdate = (id) => (dispatch) => {
+  apiService.DELETE(urls.ROOMS(id), (response) => dispatch(setTasks(response.data)));
+};
