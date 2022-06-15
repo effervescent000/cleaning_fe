@@ -18,3 +18,10 @@ Cypress.Commands.add("navigateToRooms", () => {
   cy.login(user.username, user.password);
   cy.contains("Rooms").click();
 });
+
+Cypress.Commands.add("navigateToTasks", () => {
+  const user = { username: "test_user", password: "ilovebutts" };
+  cy.visit(`http://127.0.0.1:3000`);
+  cy.login(user.username, user.password);
+  cy.contains("Tasks").click();
+});

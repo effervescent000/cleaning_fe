@@ -16,7 +16,9 @@ const TasksPage = () => {
     <div>
       {tasks.length ? <TasksWrapper tasks={tasks} /> : <>No tasks added!</>}
       <TaskModal isOpen={modalIsOpen} toggle={toggle} />
-      <button onClick={toggle}>+</button>
+      <button data-cy="add-task" onClick={toggle}>
+        +
+      </button>
     </div>
   );
 };

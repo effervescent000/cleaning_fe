@@ -23,5 +23,5 @@ export const replaceTask = (task) => ({
 });
 
 export const deleteTaskAndUpdate = (id) => (dispatch) => {
-  apiService.DELETE(urls.ROOMS(id), (response) => dispatch(setTasks(response.data)));
+  apiService.DELETE(urls.TASKS(id), (response) => dispatch(setTasks(response.data)));
 };
